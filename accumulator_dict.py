@@ -21,3 +21,14 @@ def accumDict(line):
     for i in range(len(categorical_columns)):
         temp_dict[categorical_columns[i]]=set([line[i]])
     dict1 += temp_dict
+
+    
+    
+default_dict = {}
+for i in categorical_columns:
+    default_dict[i] = set()
+
+global dict1
+dict1 = sc.accumulator(default_dict,DictAccumulatorParam())
+
+print(dict1)
